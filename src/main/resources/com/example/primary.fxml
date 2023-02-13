@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" focusTraversable="true" onKeyReleased="#onTab" prefHeight="790.0" prefWidth="402.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PrimaryController">
+   <children>
+      <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="362.0" text="LifeCalc Benefit&#10;Provisions Calculator">
+         <font>
+            <Font name="Californian FB" size="24.0" />
+         </font>
+      </Label>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="362.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="142.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="59.0" minWidth="10.0" prefWidth="48.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Minimum Refund %">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The percentage of the total entrance fee that is guaranteed to be refunded upon exit from the community.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </Label>
+            <TextField fx:id="minRef" alignment="CENTER_RIGHT" maxWidth="40.0" onAction="#updateVals" onMouseReleased="#updateVals" prefWidth="29.0" text="50" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The percentage of the total entrance fee that is guaranteed to be refunded upon exit from the community.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </TextField>
+            <Label text="Processing Fee %" GridPane.columnIndex="2">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The percentage of the total entrance fee kept as a processing fee (or admin fee) that is immediately nonrefundable.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </Label>
+            <TextField fx:id="procFee" alignment="CENTER_RIGHT" maxWidth="40.0" onAction="#updateVals" onMouseReleased="#updateVals" text="10" GridPane.columnIndex="3">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The percentage of the total entrance fee kept as a processing fee (or admin fee) that is immediately nonrefundable.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </TextField>
+            <Label text="Reduction %" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The monthly rate at which the entrance fee refund declines.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </Label>
+            <TextField fx:id="redRate" alignment="CENTER_RIGHT" maxWidth="40.0" onAction="#updateVals" onMouseReleased="#updateVals" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The monthly rate at which the entrance fee refund declines.&#10;&#10;Accepts values between 0-100%" />
+               </tooltip>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" text="Months w/ Full Refund" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The number of months in which the entrance fee is guaranteed to be fully refundable.&#10;&#10;Accepts values between 0-100 months." />
+               </tooltip>
+            </Label>
+            <TextField fx:id="fullRef" alignment="CENTER_RIGHT" maxWidth="40.0" onAction="#updateVals" onMouseReleased="#updateVals" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip showDuration="15s" text="The number of months in which the entrance fee is guaranteed to be fully refundable.&#10;&#10;Accepts values between 0-100 months." />
+               </tooltip>
+            </TextField>
+         </children>
+      </GridPane>
+      <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="362.0">
+         <children>
+            <GridPane alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="171.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="88.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="20.0" prefWidth="66.0" onAction="#updateVals" text="Monthly" selected="true">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="monthOrYear"/>
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" onAction="#updateVals" text="Annual" toggleGroup="$monthOrYear" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <FlowPane alignment="CENTER_RIGHT" columnHalignment="RIGHT" hgap="10.0" maxWidth="242.0" prefHeight="25.0" prefWidth="191.0">
+               <children>
+                  <Label fx:id="copyStatus">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Button onAction="#copyRla" text="Copy RLAs">
+                     <tooltip>
+                        <Tooltip showDuration="15s" text="Click to copy the refund liability assumptions to the clipboard." />
+                     </tooltip>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </FlowPane>
+         </children>
+      </FlowPane>
+      <TableView fx:id="table" focusTraversable="false" prefHeight="2000.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="yr" prefWidth="224.0" style="-fx-alignment: CENTER-RIGHT;" text="Year" />
+          <TableColumn fx:id="month" prefWidth="222.0" style="-fx-alignment: CENTER-RIGHT;" text="Month" />
+            <TableColumn fx:id="rla" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="RLA" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CCA-Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
