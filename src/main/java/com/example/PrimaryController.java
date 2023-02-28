@@ -62,7 +62,7 @@ public class PrimaryController implements Initializable{
     }
 
     // updateRla(): function to calculate the Refund Liability Assumptions
-    //              for the table over the next 100 months
+    //              for the table over the next 400 months
     private void updateRla() {
 
         // Clears the current data (if recalculating RLAs)
@@ -95,8 +95,8 @@ public class PrimaryController implements Initializable{
         RadioButton selected = (RadioButton) monthOrYear.getSelectedToggle();
         isMonthly = ("Monthly".equals(selected.getText()));
 
-            // Iterates through the first 100 months (9 years 4 months)
-            for (Integer j = 0; j < 100; j++) {
+            // Iterates through the first 400 months (34 years 3 months)
+            for (Integer j = 0; j < 400; j++) {
 
                 // First calculates the next month and year
                 addMonth = j + 1;
